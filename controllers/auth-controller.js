@@ -3,7 +3,6 @@ const bcrypt= require("bcryptjs")
 
 const home = async (req,res) => {
     try{
-        console.log("run router");
         res.status(200).send("Welcome router via controller");
     }
     catch(error){
@@ -19,7 +18,6 @@ const register = async(req,res)=>{
             return res.status(400).json({msg:"User already exist."})
         } 
        const reg= await User.create(newData)
-        console.log(reg);
         // res.status(200).json({message: req.body});
         if(reg) res.json(reg);
         else res.send("register fail")
@@ -41,7 +39,6 @@ const login = async (req,res)=>{
         const passvalid = await bcrypt.compare(userData.password,userExist.password);
         if(passvalid)
         {
-            console.log(userExist)
            res.json(userExist);
         }
         else{
