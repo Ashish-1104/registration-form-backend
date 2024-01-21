@@ -7,7 +7,7 @@ const app = express();
 const router = require("./router/auth-router")
 const { connectDB } = require("./utlis/db")
 const corsOptions = {
-    origin: "http://127.0.0.1:5173",
+    origin: "https://registration-form-azure-xi.vercel.app",
     methods: "GET,POST",
     credentials: true
 };
