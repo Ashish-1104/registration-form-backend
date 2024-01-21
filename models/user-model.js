@@ -48,7 +48,6 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre('save',async function(){
-    console.log("pre method",this)
     const user= this;
     if(!user.isModified('password')){
         console.log("No Update");
@@ -59,10 +58,9 @@ userSchema.pre('save',async function(){
         const saltRound= await bcrypt.genSalt(10);
         const hash_password = await bcrypt.hash(user.password,saltRound);
         user.password=hash_password;
-        console.log(user.password, hash_password)    
     }
         catch(error){
-            console.log(error+"  password error");
+            // console.log(error+"  password error");
         }
     
 })
